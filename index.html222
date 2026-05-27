@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição SENAI</title>
+    <style>
+        /* --- CONFIGURAÇÃO DO SITE --- */
+        body {
+            background-color: #9c9595; 
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Caixa branca que centraliza o conteúdo */
+        .container {
+            background: rgb(254, 255, 255);
+            padding: 25px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0px 2px 10px rgba(247, 243, 243, 0.945);
+        }
+
+        
+        .tela { display: none; }
+        .ativa { display: block; }
+
+        /* --- ESTILOS DOS FORMULÁRIOS --- */
+        h2 { color: #0056b3; text-align: center; margin-bottom: 20px; }
+        h3 { color: #0056b3; margin-top: 20px; border-bottom: 1px solid #edebeb; padding-bottom: 5px; }
+        
+        .campo { margin-bottom: 12px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        textarea { height: 60px; }
+
+        
+        .opcoes { display: flex; gap: 10px; margin-top: 5px; }
+        .opcoes label { font-weight: normal; display: inline; }
+        .opcoes input { width: auto; margin-right: 5px; }
+
+        /* --- BOTÕES --- */
+        button { width: 100%; padding: 10px; margin-top: 10px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        
+        .btn-azul { background-color: #0056b3; color: white; }
+        .btn-verde { background-color: #28a745; color: white; }
+        .btn-vermelho { background-color: #bcb5b5; color: white; }
+        .btn-cinza { background-color: #6c757d; color: white; }
+
+        .link { display: block; text-align: center; margin-top: 15px; color: #0056b3; cursor: pointer; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div id="tela1" class="container tela ativa">
+        <h2>Inscrição SENAI</h2>
+        <form onsubmit="event.preventDefault(); mudarTela('tela2')">
+            <div class="campo"><label>Nome completo:</label><input type="text" required></div>
+            <div class="campo"><label>E-mail:</label><input type="email" required></div>
+            <div class="campo"><label>Telefone:</label><input type="tel" required></div>
+            <div class="campo">
+                <label>Curso desejado (SENAI Areias):</label>
+                <select required>
+                    <option value="">Selecione um curso...</option>
+                    <option value="ads_superior">Superior de Tecnologia em Análise e Desenvolvimento de Sistemas (ADS)</option>
+                    <option value="tec_automacao">Técnico em Automação Industrial</option>
+                    <option value="tec_desenvolvimento">Técnico em Desenvolvimento de Sistemas</option>
+                    <option value="tec_eletronica">Técnico em Eletrônica</option>
+                    <option value="tec_eletrotecnica">Técnico em Eletrotécnica</option>
+                    <option value="tec_internet">Técnico em Informática para Internet</option>
+                    <option value="tec_jogos">Técnico em Programação de Jogos Digitais</option>
+                    <option value="tec_redes">Técnico em Redes de Computadores</option>
+                </select>
+            </div>
+            <div class="campo"><label>Observações:</label><textarea></textarea></div>
+            
+            <button type="submit" class="btn-azul">Enviar Inscrição</button>
+            <a class="link" onclick="mudarTela('tela3')">nao sou aluno!</a>
+        </form>
+    </div>
+
+    <div id="tela2" class="container tela" style="text-align: center;">
+        <h2 style="color: black; font-size: 18px;">O SENAI AGRADECE SUA INSCRIÇÃO!!!</h2>
+        <button class="btn-verde" onclick="mudarTela('tela1')">Voltar</button>
+    </div>
+
+    <div id="tela3" class="container tela">
+        <h2 style="font-size: 18px;">Enriquecimento do Cadastro com:</h2>
+        <form id="formCadastro" onsubmit="event.preventDefault();">
+            
+            <h3>1 - Dados Pessoais</h3>
+            <div class="campo"><label>Nome completo</label><input type="text"></div>
+            <div class="campo"><label>Data de Nascimento</label><input type="date"></div>
+            <div class="campo"><label>CPF</label><input type="text"></div>
+            <div class="campo"><label>RG</label><input type="text"></div>
+            <div class="campo"><label>GÊNERO</label><input type="text"></div>
+            <div class="campo"><label>ESTADO CIVIL</label><input type="text"></div>
+            <div class="campo"><label>NACIONALIDADE</label><input type="text"></div>
+            <div class="campo"><label>NATURALIDADE</label><input type="text"></div>
+
+            <h3>2 - Endereço Completo</h3>
+            <div class="campo"><label>Logradouro</label><input type="text"></div>
+            <div class="campo"><label>Número</label><input type="text"></div>
+            <div class="campo"><label>Complemento</label><input type="text"></div>
+            <div class="campo"><label>Bairro</label><input type="text"></div>
+            <div class="campo"><label>Cidade</label><input type="text"></div>
+            <div class="campo">
+                <label>UF (select)</label>
+                <select>
+                    <option value="">Selecione...</option>
+                    <option value="PE">PE</option>
+                    <option value="SP">SP</option>
+                    <option value="RJ">RJ</option>
+                </select>
+            </div>
+            <div class="campo"><label>CEP</label><input type="text"></div>
+
+            <h3>3 - Contato</h3>
+            <div class="campo"><label>Telefone Celular</label><input type="tel"></div>
+            <div class="campo"><label>Whatsapp</label><input type="tel"></div>
+            <div class="campo"><label>E-mail</label><input type="email"></div>
+            <div class="campo"><label>LinkedIn</label><input type="text"></div>
+
+            <h3>4 - Outras Informações (opcional / complementares)</h3>
+            <div class="campo">
+                <label>POSSUI CNH ? (RADIO)</label>
+                <div class="opcoes">
+                    <label><input type="radio" name="cnh"> Sim</label>
+                    <label><input type="radio" name="cnh"> Não</label>
+                </div>
+            </div>
+            <div class="campo">
+                <label>Categoria (A-B-C-D-E) com checkbox</label>
+                <div class="opcoes">
+                    <label><input type="checkbox"> A</label>
+                    <label><input type="checkbox"> B</label>
+                    <label><input type="checkbox"> C</label>
+                    <label><input type="checkbox"> D</label>
+                    <label><input type="checkbox"> E</label>
+                </div>
+            </div>
+            <div class="campo">
+                <label>Tipo sanguíneo – com select</label>
+                <select>
+                    <option value="">Selecione...</option>
+                    <option value="O+">O+</option>
+                    <option value="A+">A+</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>PCD (radio)</label>
+                <div class="opcoes">
+                    <label><input type="radio" name="pcd"> Sim</label>
+                    <label><input type="radio" name="pcd"> Não</label>
+                </div>
+            </div>
+            <div class="campo"><label>Observação (campo)</label><textarea></textarea></div>
+
+            <button type="button" class="btn-azul" onclick="alert('Gravado!'); mudarTela('tela1');">BOTÃO GRAVAR</button>
+            <button type="reset" class="btn-vermelho">BOTÃO CANCELAR (LIMPA O FORM)</button>
+            <button type="button" class="btn-cinza" onclick="mudarTela('tela1')">BOTÃO VOLTAR (VOLTAR PARA PÁGINA INICIAL)</button>
+        </form>
+    </div>
+
+    <script>
+        function mudarTela(idTela) {
+            document.querySelectorAll('.tela').forEach(t => t.classList.remove('ativa'));
+            document.getElementById(idTela).classList.add('ativa');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
+
+```
